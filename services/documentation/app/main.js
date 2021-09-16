@@ -9,8 +9,8 @@ async function main() {
     const envPassword = process.env.DOC_PASSWORD
     const envPort = process.env.PORT || "3000"
 
-    assert(typeof envUser === 'string', "missing ENV.USER")
-    assert(typeof envPassword === 'string', "missing ENV.PASSWORD")
+    assert(typeof envUser === 'string', "missing ENV.DOC_USER")
+    assert(typeof envPassword === 'string', "missing ENV.DOC_PASSWORD")
 
     await app.register(require('fastify-basic-auth'), {
         validate(username, password, _req, _reply, done) {
