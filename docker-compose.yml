@@ -3,11 +3,20 @@ services:
   nginx:
     build: ./services/proxy_reverse
     depends_on:
+      - auth
       - account
     networks:
       - arch
     ports:
       - '3000:80'
+  auth:
+    build: ./services/auth
+    depends_on:
+      - mongo
+    networks:
+      - arch
+    environment:
+      PORT: '80'
   account:
     build: ./services/account
     depends_on:
