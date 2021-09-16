@@ -1,15 +1,33 @@
-version: "3.6"
-
+version: '3.6'
 services:
-   mongo:
+  nginx:
+    build: ./services/proxy_reverse
+    depends_on:
+      - account
+    networks:
+      - arch
+    ports:
+      - '3000:80'
+  account:
+    build: ./services/account
+    depends_on:
+      - mongo
+    networks:
+      - arch
+    environment:
+      PORT: '80'
+  mongo:
     image: mongo
     restart: always
-    volumes: 
-      - mongodb:/data/db 
+    networks:
+      - arch
+    volumes:
+      - 'mongodb:/data/db'
     environment:
-      MONGO_INITDB_ROOT_USERNAME: "${MONGO_USER}"
-      MONGO_INITDB_ROOT_PASSWORD: "${MONGO_PASSWORD}"
-      MONGO_INITDB_DATABASE: "${MONGO_DB}"
-
+      MONGO_INITDB_ROOT_USERNAME: '${MONGO_USER}'
+      MONGO_INITDB_ROOT_PASSWORD: '${MONGO_PASSWORD}'
+      MONGO_INITDB_DATABASE: '${MONGO_DB}'
+networks:
+  arch: null
 volumes:
-  mongodb:
+  mongodb: null
