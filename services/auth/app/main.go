@@ -12,7 +12,7 @@ func main() {
 	app := fiber.New()
 	port := env.GetEnv("PORT", "3000")
 
-	routes.MainRouter(app)
+	routes.AuthRouter(app)
 
 	err := app.Listen(fmt.Sprintf(":%s", port))
 	if err != nil {

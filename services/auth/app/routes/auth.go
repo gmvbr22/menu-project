@@ -2,7 +2,7 @@ package routes
 
 import "github.com/gofiber/fiber/v2"
 
-func MainRouter(app fiber.Router) {
+func AuthRouter(app fiber.Router) {
 	app.Get("/public", hello())
 }
 
