@@ -1,0 +1,12 @@
+{
+  "name": "documentation",
+  "version": "1.0.0",
+  "main": "app/main.js",
+  "author": "gmvbr",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^3.21.1",
+    "fastify-basic-auth": "^2.1.0",
+    "fastify-swagger": "^4.12.0"
+  }
+}

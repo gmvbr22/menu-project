@@ -1,0 +1,66 @@
+swagger: "2.0"
+info:
+  description: "Documentação da API"
+  version: "1.0.0"
+  title: "menu-project"
+  contact:
+    url: "https://github.com/gmvbr"
+host: "locahost:3000"
+basePath: "/"
+tags:
+- name: "auth_service"
+  description: "Microsserviço de autenticação"
+  externalDocs:
+    description: "git"
+    url: "https://github.com/gmvbr/menu-project/tree/main/services/auth"
+schemes:
+- "http"
+paths:
+  /auth/public/login:
+    post:
+      tags:
+      - "auth_service"
+      summary: "Gerar token de acesso"
+      description: "Obter token de acesso"
+      operationId: "authServiceLogin"
+      responses:
+        '200':
+          description: OK
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+
+  /auth/public/revoke:
+    post:
+      tags:
+      - "auth_service"
+      summary: "Revoga token de acesso"
+      description: "Adiciona o token não expirado na lista de negação"
+      operationId: "authServiceRevoke"
+      responses:
+        '200':
+          description: OK
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+
+  /auth/introspection:
+    post:
+      tags:
+      - "auth_service"
+      summary: "Validar token de acesso"
+      description: "Valida o token de acesso e define os headers"
+      operationId: "authServiceIntrospection"
+      responses:
+        '200':
+          description: OK
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+
+externalDocs:
+  description: "Menu Project"
+  url: "https://github.com/gmvbr/menu-project"
