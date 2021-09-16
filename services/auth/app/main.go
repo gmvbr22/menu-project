@@ -12,8 +12,9 @@ func main() {
 	app := fiber.New()
 	port := env.GetEnv("PORT", "3000")
 
-	routes.AuthRouter(app)
-
+	routes.PublicRouter(app)
+	routes.InternalRouter(app)
+	
 	err := app.Listen(fmt.Sprintf(":%s", port))
 	if err != nil {
 		panic(err)
